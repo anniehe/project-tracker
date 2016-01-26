@@ -30,6 +30,19 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: grades; Type: TABLE; Schema: public; Owner: user; Tablespace: 
+--
+
+CREATE TABLE grades (
+    student_github character varying(30),
+    project_title character varying(30),
+    grade integer
+);
+
+
+ALTER TABLE public.grades OWNER TO "user";
+
+--
 -- Name: projects; Type: TABLE; Schema: public; Owner: user; Tablespace: 
 --
 
@@ -85,14 +98,30 @@ ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq':
 
 
 --
+-- Data for Name: grades; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY grades (student_github, project_title, grade) FROM stdin;
+jhacks	Markov	10
+sdevelops	Blockly	100
+jhacks	Blockly	2
+sdevelops	Markov	50
+sdevelops	Ubermelon Order Form	5
+sdevelops	Ubermelon Order Report	15
+jhacks	Ubermelon Order Form	7
+jhacks	Ubermelon Order Report	8
+\.
+
+
+--
 -- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: user
 --
 
 COPY projects (id, title, description, max_grade) FROM stdin;
 1	Markov	Tweets generated from Markov chains	50
-2	Blockly	Programmatic Logic Puzzle Game	10
 3	Ubermelon Order Form	Form to order melons	20
 4	Ubermelon Order Report	Creates a report for all ubermelon sales	20
+2	Blockly	Programmatic Logic Puzzle Game	100
 \.
 
 
